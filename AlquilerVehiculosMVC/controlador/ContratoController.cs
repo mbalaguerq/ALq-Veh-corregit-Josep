@@ -1,8 +1,10 @@
 ﻿using AlquilerVehiculosMVC.modelo;
 using AlquilerVehiculosMVC.vista;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +15,17 @@ namespace AlquilerVehiculosMVC.controlador
         Datos datos;
         public ContratoController(Datos pdatos)
         {
-            datos = pdatos; 
+            datos = pdatos;
         }
+        public String getVehiculobytipo(string matricula)
+        {
+            string vehiculo=datos.getDatosVehiculo(matricula);
+            return vehiculo;
+        }
+        public void addContrato(Hashtable contratohash )
+        {
+            datos.addContrato(contratohash);
+        }
+        
     }
 }

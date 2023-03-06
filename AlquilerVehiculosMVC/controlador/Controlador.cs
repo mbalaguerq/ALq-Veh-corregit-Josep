@@ -140,7 +140,9 @@ namespace AlquilerVehiculosMVC.controlador
         private void altaContrato()
         {
             ContratoController contratoController = new ContratoController(datos);
-            ContratoView contratoView
+            ClienteController clienteController = new ClienteController(datos);
+            ContratoView contratoView = new ContratoView(contratoController, clienteController);
+            contratoView.altaContrato();
             
         }
     }

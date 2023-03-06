@@ -17,7 +17,6 @@ namespace AlquilerVehiculosMVC.controlador
             // porr parametro con sus List/arraylist llenos de datos
             datos = pDatos;
         }
-
         public void eliminarVehiculo(string matricula)
         {
             datos.eliminarVehiculo(matricula);

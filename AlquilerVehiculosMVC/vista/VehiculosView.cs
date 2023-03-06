@@ -9,11 +9,9 @@ namespace AlquilerVehiculosMVC.vista
 {
     internal static class VehiculosView
     {
-
         public static int seleccionarTipoVehiculo()
         {
             int opcion;
-
             do
             {
                 Console.WriteLine("1) Coche 2) Moto 3) Camión 0) Salir");
@@ -21,7 +19,6 @@ namespace AlquilerVehiculosMVC.vista
             } while (opcion < 0 || opcion > 3);
             return opcion;
         }
-
         public static Hashtable addVehiculo(int tipoVehiculo)
         {
             Hashtable vehiculoHash = new Hashtable();
@@ -61,19 +58,6 @@ namespace AlquilerVehiculosMVC.vista
                     vehiculoHash.Add("kg", kg);
                     break;
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
             return vehiculoHash;
         }
         public static void mostrarVehiculos(List<string> listaVehiculos,int tipo)
