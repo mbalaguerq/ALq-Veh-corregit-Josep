@@ -57,11 +57,11 @@ namespace AlquilerVehiculosMVC.modelo
         public void addContrato(Hashtable contratosHash)
         {
             Contrato ocontrato = new Contrato();
-            ocontrato.FechaInicio = (DateTime)contratosHash["Fecha Inicio: "];
-            ocontrato.FechaFin = (DateTime)contratosHash["Fecha Final: "];
-            ocontrato.PrecioDia = (decimal)contratosHash["Precio día: "];
-            ocontrato.Vehiculo = (Vehiculo)contratosHash["Vehículo: "];
-            ocontrato.Cliente = (Cliente)contratosHash["Cliente: "];
+            ocontrato.FechaInicio = (DateTime)contratosHash["Fecha Inicio"];
+            ocontrato.FechaFin = (DateTime)contratosHash["Fecha Fin"];
+            ocontrato.PrecioDia = (decimal)contratosHash["Precio"];
+            ocontrato.Vehiculo = (Vehiculo)contratosHash["Vehículo"];
+            ocontrato.Cliente = (Cliente)contratosHash["Cliente"];
             contrato.Add(ocontrato);
         }
         public void eliminarVehiculo(string matricula)
