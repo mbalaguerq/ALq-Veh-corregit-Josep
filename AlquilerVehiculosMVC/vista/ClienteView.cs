@@ -83,5 +83,22 @@ namespace AlquilerVehiculosMVC.vista
 
             }
         }
+        public void grabarCSV()
+        {
+            Console.WriteLine("Llistat de clients en format CSV");            
+            clienteController.grabarCSV();
+            Console.WriteLine("Les dades s'han escrit al fitxer.");
+            Console.WriteLine("Trobaràs el teu llistat a la ubicació: c:\\CSV\\clientes.csv");
+            Console.WriteLine();
+        }
+        public void leerCSV()
+        {
+            string[] fitxer = new string[] { };
+
+            Console.WriteLine("Lectura d'arxiu Csv: ");
+            Console.WriteLine();
+            fitxer=clienteController.leerCSV();
+        }
+
     }
 }

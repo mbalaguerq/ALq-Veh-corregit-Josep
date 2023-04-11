@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
@@ -18,6 +19,66 @@ namespace AlquilerVehiculosMVC.modelo
             vehiculos = new List<Vehiculo>();
             clientes = new List<Cliente>();
             contrato = new List<Contrato>();
+        }
+        public void carregaParametres()
+        {
+            Cliente cliente1 = new Cliente();
+            cliente1.Nif = "11111111A";
+            cliente1.Nombre = "Josep";
+
+            Cliente cliente2 = new Cliente();
+            cliente2.Nif = "22222222B";
+            cliente2.Nombre = "Ricardo";
+
+            clientes.Add(cliente1);
+            clientes.Add(cliente2);
+
+            Coche coche1 = new Coche();
+            coche1.Matricula = "1111ZZ";
+            coche1.Marca = "Nisan";
+            coche1.Model = "Juke";
+            coche1.Puertas = 5;
+
+            Moto moto1 = new Moto();
+            moto1.Matricula = "2222XXX";
+            moto1.Marca = "Ducati";
+            moto1.Model = "Panigale R";
+            moto1.Cc = 1199;
+
+            Camion camion1 = new Camion();
+            camion1.Matricula = "3333YYY";
+            camion1.Marca = "Mercedes";
+            camion1.Model = "K1";
+            camion1.Kg = 2500;
+
+            vehiculos.Add(coche1);
+            vehiculos.Add(moto1);
+            vehiculos.Add(camion1);
+
+            Contrato contrato1 = new Contrato();
+            contrato1.FechaInicio = DateTime.Parse("01/05/2023");
+            contrato1.FechaFin= DateTime.Parse("10/05/2023");
+            contrato1.PrecioDia = 60;
+            contrato1.Vehiculo = coche1;
+            contrato1.Cliente = cliente1;
+            contrato.Add(contrato1);
+
+            Contrato contrato2 = new Contrato();
+            contrato2.FechaInicio = DateTime.Parse("11/05/2023");
+            contrato2.FechaFin = DateTime.Parse("15/05/2023");
+            contrato2.PrecioDia = 80;
+            contrato2.Vehiculo = moto1;
+            contrato2.Cliente = cliente2;
+            contrato.Add(contrato2);
+
+            Contrato contrato3 = new Contrato();
+            contrato3.FechaInicio = DateTime.Parse("22/05/2023");
+            contrato3.FechaFin = DateTime.Parse("25/05/2023");
+            contrato3.PrecioDia = 90;
+            contrato3.Vehiculo = coche1;
+            contrato3.Cliente = cliente2;
+            contrato.Add(contrato3);
+
         }
         public void addCliente(Hashtable clienteHas)
         {
@@ -173,7 +234,34 @@ namespace AlquilerVehiculosMVC.modelo
             }
             return "";
         }
+        public List<string> listarContratos()
+        {
+            List <string> lista = new List<string>();
 
+            foreach (Contrato contrato in contrato)
+            {
+                lista.Add("Data Inici: " +  contrato.FechaInicio.ToShortDateString() + "\n" +  
+                          "Data Final: " + contrato.FechaFin.ToShortDateString() + "\n" +
+                          "Dades Vehicle:\n" + contrato.Vehiculo.ToString() + "\n" + 
+                          "Dades Client:\n" + contrato.Cliente.ToString());
+            }
+            return lista;
+        }
+        public void grabarCSV()
+        {
+            StreamWriter fitxer = new StreamWriter(@"c:\CSV\clientes.csv");
+            
+            string texto = "";
+
+            foreach (Cliente cliente in clientes)
+            {
+                texto = cliente.Nif + "," + cliente.Nombre;
+                fitxer.WriteLine(texto);
+            }
+
+            fitxer.Close();
+
+        }
     }
 
 

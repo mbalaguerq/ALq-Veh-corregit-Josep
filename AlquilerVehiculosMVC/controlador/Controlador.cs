@@ -22,6 +22,7 @@ namespace AlquilerVehiculosMVC.controlador
         {
             datos = new Datos();
             vista = new View();
+            datos.carregaParametres();
         }
         public void gestionMenu()
         {
@@ -54,6 +55,19 @@ namespace AlquilerVehiculosMVC.controlador
                     case "7":
                         altaContrato();
                         break;
+                    case "8":
+                        listarContratos();
+                        break;
+                    case "9":
+                        grabarCSV();
+                        break;
+                    case "A":
+                        leerCSV;
+                        break;
+                    case "B":
+                        //altaContrato();
+                        break;
+
                     case "0":
                         salir = true;
                         break;
@@ -144,6 +158,25 @@ namespace AlquilerVehiculosMVC.controlador
             ContratoView contratoView = new ContratoView(contratoController, clienteController);
             contratoView.altaContrato();
             
+        }
+        private void listarContratos()
+        {
+            ContratoController contratoController = new ContratoController(datos);
+            ClienteController clienteController = new ClienteController(datos);
+            ContratoView contratoView = new ContratoView(contratoController, clienteController);
+            contratoView.listarContratos();
+        }
+        public void grabarCSV()
+        {
+            ClienteController clienteController = new ClienteController(datos);
+            ClienteView clienteView = new ClienteView(clienteController);
+            clienteView.grabarCSV();
+        }
+        public void leerCSV()
+        {
+            ClienteController clienteController = new ClienteController(datos);
+            ClienteView clienteView = new ClienteView(clienteController);
+            clienteView.leerCSV();
         }
     }
 }

@@ -48,5 +48,10 @@ namespace AlquilerVehiculosMVC.controlador
         {
             datos.eliminarCLiente(nif);
         }
+
+        public void grabarCSV()
+        {
+            datos.grabarCSV();
+        }
     }
 }

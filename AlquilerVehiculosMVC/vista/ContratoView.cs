@@ -1,5 +1,4 @@
 ﻿using AlquilerVehiculosMVC.controlador;
-using AlquilerVehiculosMVC.modelo;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,7 +22,7 @@ namespace AlquilerVehiculosMVC.vista
         {
             Hashtable contratoHash = new Hashtable();
 
-            string matricula; 
+            string matricula;
             DateTime fechaInicio, fechaFin;
             decimal precio;
             Console.WriteLine("Nuevo Contrato: ");
@@ -58,7 +57,7 @@ namespace AlquilerVehiculosMVC.vista
                 Console.Write("Fecha inicio dd/mm/aaaa: ");
                 fechaInicio = DateTime.Parse(Console.ReadLine());
                 Console.Write("Fecha fin dd/mm/aaaa: ");
-                fechaFin =DateTime.Parse(Console.ReadLine());
+                fechaFin = DateTime.Parse(Console.ReadLine());
                 Console.Write("Precio: ");
                 precio = Decimal.Parse(Console.ReadLine());
 
@@ -66,9 +65,23 @@ namespace AlquilerVehiculosMVC.vista
                 contratoHash.Add("Fecha Fin", fechaFin);
                 contratoHash.Add("Precio", precio);
 
-                contratoController.addContrato(contratoHash); 
+                contratoController.addContrato(contratoHash);
             }
         }
+        public void listarContratos()
+        {
+            List<string> ret= new List<string>();
+
+            Console.WriteLine("LLISTA DE CONTRACTES: ");
+            ret=contratoController.listarContratos();
+
+            foreach (string str in ret)
+            {
+                Console.WriteLine(str);
+                Console.WriteLine();
+            }
+        }
+
     }
-   
+
 }

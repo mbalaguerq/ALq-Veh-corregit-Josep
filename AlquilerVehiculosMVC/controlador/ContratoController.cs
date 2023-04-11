@@ -26,6 +26,14 @@ namespace AlquilerVehiculosMVC.controlador
         {
             datos.addContrato(contratohash);
         }
-        
+        public List<string> listarContratos()
+        {
+            List<string> ret = new List<string>(); 
+            ret = datos.listarContratos();
+
+            return ret;
+        }
+
+
     }
 }
