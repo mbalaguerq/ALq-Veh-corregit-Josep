@@ -266,8 +266,7 @@ namespace AlquilerVehiculosMVC.modelo
             string fichero = @"C:\csv\clientes.csv";
             StreamReader archivo = new StreamReader(fichero);
             string linea;
-            List<string> lines = new List<string>();
-            // Si el archivo no tiene encabezado, elimina la siguiente línea
+            List<string> lines = new List<string>();            
            
             while ((linea = archivo.ReadLine()) != null)
             {
