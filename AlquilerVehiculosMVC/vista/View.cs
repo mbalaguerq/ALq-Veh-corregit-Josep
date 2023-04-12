@@ -35,6 +35,7 @@ namespace AlquilerVehiculosMVC.vista
             {
                 Console.Write("Opcion: ");
                 opcion = Console.ReadLine();
+                
             } while (!"0123456789AB".Contains(opcion));
 
             return opcion;

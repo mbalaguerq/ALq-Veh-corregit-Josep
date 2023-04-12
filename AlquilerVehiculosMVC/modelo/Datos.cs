@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
 
 namespace AlquilerVehiculosMVC.modelo
 {
@@ -258,9 +259,38 @@ namespace AlquilerVehiculosMVC.modelo
                 texto = cliente.Nif + "," + cliente.Nombre;
                 fitxer.WriteLine(texto);
             }
-
             fitxer.Close();
+        }
+        public List <string> leerCSV()
+        {
+            string fichero = @"C:\csv\clientes.csv";
+            StreamReader archivo = new StreamReader(fichero);
+            string linea;
+            List<string> lines = new List<string>();
+            // Si el archivo no tiene encabezado, elimina la siguiente línea
+           
+            while ((linea = archivo.ReadLine()) != null)
+            {
+                lines.Add(linea);                
+            }
+            return lines;
+        }
+        public void carregaCSV()
+        {
+            Cliente cliente;
 
+            string fichero = @"C:\csv\clientes.csv";
+            StreamReader archivo = new StreamReader(fichero);
+            string linea;
+            linea = archivo.ReadLine();
+            while ((linea = archivo.ReadLine()) != null)
+            {
+                string[] fila = linea.Split(',');
+                cliente = new Cliente();
+                cliente.Nif = fila[0];
+                cliente.Nombre = fila[1];
+                clientes.Add(cliente);
+            }
         }
     }
 

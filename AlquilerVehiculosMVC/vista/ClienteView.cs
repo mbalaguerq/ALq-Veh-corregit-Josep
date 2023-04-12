@@ -93,12 +93,29 @@ namespace AlquilerVehiculosMVC.vista
         }
         public void leerCSV()
         {
-            string[] fitxer = new string[] { };
+            List<string> fila= clienteController.leerCSV();
 
             Console.WriteLine("Lectura d'arxiu Csv: ");
             Console.WriteLine();
-            fitxer=clienteController.leerCSV();
-        }
+           
 
+            foreach (string filaString in fila) 
+            {
+                string[] linea = filaString.Split(',');
+
+                for (int i = 0; i < linea.Length; i++)
+                {
+                    Console.Write(linea[i] + "\t");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
+        public void carregaCSV()
+        {
+            Console.WriteLine("Càrrega d'arxiu Csv: ");
+            Console.WriteLine("Les dades de l'arxiu es grabaràn com a nous clients");
+            clienteController.carregaCSV();
+        }
     }
 }

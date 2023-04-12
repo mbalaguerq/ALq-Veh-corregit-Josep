@@ -62,10 +62,10 @@ namespace AlquilerVehiculosMVC.controlador
                         grabarCSV();
                         break;
                     case "A":
-                        leerCSV;
+                        leerCSV();
                         break;
                     case "B":
-                        //altaContrato();
+                        carregaCSV();
                         break;
 
                     case "0":
@@ -177,6 +177,12 @@ namespace AlquilerVehiculosMVC.controlador
             ClienteController clienteController = new ClienteController(datos);
             ClienteView clienteView = new ClienteView(clienteController);
             clienteView.leerCSV();
+        }
+        public void carregaCSV()
+        {
+            ClienteController clienteController = new ClienteController(datos);
+            ClienteView clienteView = new ClienteView(clienteController);
+            clienteView.carregaCSV();
         }
     }
 }
