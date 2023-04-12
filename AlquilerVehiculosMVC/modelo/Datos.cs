@@ -281,8 +281,7 @@ namespace AlquilerVehiculosMVC.modelo
 
             string fichero = @"C:\csv\clientes.csv";
             StreamReader archivo = new StreamReader(fichero);
-            string linea;
-            linea = archivo.ReadLine();
+            string linea;            
             while ((linea = archivo.ReadLine()) != null)
             {
                 string[] fila = linea.Split(',');
